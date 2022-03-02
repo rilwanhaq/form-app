@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom'
 import Home from './/components//home.js'
 import View from './/components//view.js';
-import Error from './/components//error'
+import Error from ".//components//error.js";
 
 
 function App() {
