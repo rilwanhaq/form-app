@@ -1,23 +1,38 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useState,useEffect } from 'react';
+import {storageKey} from "../constants";
 
 
 function View() {
+  const [data,setData]= useState([])
   useEffect (() => {
-    const name = localStorage.getItem('Name');
-    const age = localStorage.getItem('Age');
-    const occupation = localStorage.getItem('Occupation');
-    const profile = localStorage.getItem('Profile');
-    const address = localStorage.getItem('Address');
-    const mobile = localStorage.getItem('Mobile');
+    const items = JSON.parse(localStorage.getItem(storageKey))
+    if(!items)return
+    setData(items)
   },[])
 
   return (
     <>
       <div className="container">
-        <div className="row">
-          <h1></h1>
-        </div>
+      <h1>User Details</h1>
+        {
+          data.map((user)=>(<div>
+            <table>
+              <tr>
+                <th>{user.profileImage}</th>
+                <th>{user.name}</th>
+                <th>{user.age}</th>
+                <th>{user.occupation}</th>
+                <th>{user.address}</th>
+                <th>{user.phone}</th>
+                <th>{user.gender}</th>
+                <button>Delete</button>
+                <button>Update</button>
+              </tr>
+            </table>
+          </div>
+          ))
+        }
       </div>
 
     </>
