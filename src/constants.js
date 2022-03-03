@@ -1,1 +1,1 @@
-export const storageKey = "user123"
+export const storageKey = "user"
